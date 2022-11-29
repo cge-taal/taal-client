@@ -1,17 +1,17 @@
 <script lang="ts">
   import { onMount } from 'svelte'
 
-  import Checkbox from '../../lib/components/checkbox/index.svelte'
-  import Heading from '../../lib/components/heading/index.svelte'
-  import PageWithMenu from '../../lib/components/page/template/menu/index.svelte'
-  import Radio from '../../lib/components/radio/index.svelte'
-  import Spacer from '../../lib/components/layout/spacer/index.svelte'
-  import Text from '../../lib/components/text/index.svelte'
-  import TextInput from '../../lib/components/textinput/index.svelte'
+  import Checkbox from '$lib/components/checkbox/index.svelte'
+  import Heading from '$lib/components/heading/index.svelte'
+  import PageWithMenu from '$lib/components/page/template/menu/index.svelte'
+  import Radio from '$lib/components/radio/index.svelte'
+  import Spacer from '$lib/components/layout/spacer/index.svelte'
+  import Text from '$lib/components/text/index.svelte'
+  import TextInput from '$lib/components/textinput/index.svelte'
 
-  import * as api from '../../lib/api'
-  import { success, failure } from '../../lib/utils/notifications'
-  import i18n from '../../lib/i18n'
+  import * as api from '$lib/api'
+  import { success, failure } from '$lib/utils/notifications'
+  import i18n from '$lib/i18n'
 
   $: t = $i18n.t
   const pageKey = 'page.settings'

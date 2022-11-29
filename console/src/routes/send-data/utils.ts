@@ -1,6 +1,6 @@
-import { copyTextToClipboard } from '../../lib/utils/clipboard'
-import { failure } from '../../lib/utils/notifications'
-import * as api from '../../lib/api'
+import { copyTextToClipboard } from '$lib/utils/clipboard'
+import { failure } from '$lib/utils/notifications'
+import * as api from '$lib/api'
 
 const pageKey = 'page.send-data'
 

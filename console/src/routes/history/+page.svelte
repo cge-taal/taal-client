@@ -2,17 +2,18 @@
   import { onMount } from 'svelte'
   import mime from 'mime'
 
-  import ButtonSelect from '../../lib/components/button-select/index.svelte'
-  import Heading from '../../lib/components/heading/index.svelte'
-  import PageWithMenu from '../../lib/components/page/template/menu/index.svelte'
-  import Spacer from '../../lib/components/layout/spacer/index.svelte'
-  import Table from '../../lib/components/table/index.svelte'
+  import ButtonSelect from '$lib/components/button-select/index.svelte'
+  import Heading from '$lib/components/heading/index.svelte'
+  import PageWithMenu from '$lib/components/page/template/menu/index.svelte'
+  import Spacer from '$lib/components/layout/spacer/index.svelte'
+  import Table from '$lib/components/table/index.svelte'
 
-  import { downloadFileBlob, filterUnique, getColorFromDistinct } from '../../lib/utils'
-  import { success, failure } from '../../lib/utils/notifications'
-  import * as api from '../../lib/api'
+  import { downloadFileBlob, filterUnique, getColorFromDistinct } from '$lib/utils'
+  import { success, failure } from '$lib/utils/notifications'
+  import * as api from '$lib/api'
+  import i18n from '$lib/i18n'
+
   import { getColDefs, getRangeItems } from './data'
-  import i18n from '../../lib/i18n'
 
   const PUBLIC_BASE_URL = 'http://localhost:9500'
 

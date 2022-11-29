@@ -6,14 +6,14 @@
   import { onMount } from 'svelte'
   import { goto } from '$app/navigation'
 
-  import Button from '../../lib/components/button/index.svelte'
-  import Heading from '../../lib/components/heading/index.svelte'
-  import PageBasic from '../../lib/components/page/template/basic/index.svelte'
-  import Row from '../../lib/components/layout/row/index.svelte'
-  import Spacer from '../../lib/components/layout/spacer/index.svelte'
+  import Button from '$lib/components/button/index.svelte'
+  import Heading from '$lib/components/heading/index.svelte'
+  import PageBasic from '$lib/components/page/template/basic/index.svelte'
+  import Row from '$lib/components/layout/row/index.svelte'
+  import Spacer from '$lib/components/layout/spacer/index.svelte'
 
-  import * as api from '../../lib/api'
-  import i18n from '../../lib/i18n'
+  import * as api from '$lib/api'
+  import i18n from '$lib/i18n'
 
   $: t = $i18n.t
   const pageKey = 'page.new-users'

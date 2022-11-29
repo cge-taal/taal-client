@@ -1,18 +1,18 @@
 <script lang="ts">
   import { goto } from '$app/navigation'
 
-  import Button from '../../lib/components/button/index.svelte'
-  import Heading from '../../lib/components/heading/index.svelte'
-  import PageBasic from '../../lib/components/page/template/basic/index.svelte'
-  import Row from '../../lib/components/layout/row/index.svelte'
-  import Spacer from '../../lib/components/layout/spacer/index.svelte'
-  import Text from '../../lib/components/text/index.svelte'
-  import TextInput from '../../lib/components/textinput/index.svelte'
+  import Button from '$lib/components/button/index.svelte'
+  import Heading from '$lib/components/heading/index.svelte'
+  import PageBasic from '$lib/components/page/template/basic/index.svelte'
+  import Row from '$lib/components/layout/row/index.svelte'
+  import Spacer from '$lib/components/layout/spacer/index.svelte'
+  import Text from '$lib/components/text/index.svelte'
+  import TextInput from '$lib/components/textinput/index.svelte'
 
-  import { link } from '../../lib/utils/format'
-  import { success, failure } from '../../lib/utils/notifications'
-  import * as api from '../../lib/api'
-  import i18n from '../../lib/i18n'
+  import { link } from '$lib/utils/format'
+  import { success, failure } from '$lib/utils/notifications'
+  import * as api from '$lib/api'
+  import i18n from '$lib/i18n'
 
   $: t = $i18n.t
   const pageKey = 'page.register-key'

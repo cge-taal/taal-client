@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { SvelteToast } from '@zerodevx/svelte-toast'
   import { menuLinks, menuActions, mediaSize } from '$lib/stores'
   import { query } from '$lib/actions'

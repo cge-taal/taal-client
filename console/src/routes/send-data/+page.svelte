@@ -2,24 +2,27 @@
   import { onMount } from 'svelte'
   import { goto } from '$app/navigation'
 
-  import Button from '../../lib/components/button/index.svelte'
-  import Dropdown from '../../lib/components/dropdown/index.svelte'
-  import FileUpload from '../../lib/components/file-upload/index.svelte'
-  import FileTransfer from '../../lib/components/file-transfer/index.svelte'
-  import Heading from '../../lib/components/heading/index.svelte'
-  import PageWithMenu from '../../lib/components/page/template/menu/index.svelte'
-  import Switch from '../../lib/components/switch/index.svelte'
-  import Spacer from '../../lib/components/layout/spacer/index.svelte'
-  import TextInput from '../../lib/components/textinput/index.svelte'
-  import TextArea from '../../lib/components/textarea/index.svelte'
-  import Text from '../../lib/components/text/index.svelte'
+  import Button from '$lib/components/button/index.svelte'
+  import Dropdown from '$lib/components/dropdown/index.svelte'
+  import FileUpload from '$lib/components/file-upload/index.svelte'
+  import FileTransfer from '$lib/components/file-transfer/index.svelte'
+  import Heading from '$lib/components/heading/index.svelte'
+  import PageWithMenu from '$lib/components/page/template/menu/index.svelte'
+  import Switch from '$lib/components/switch/index.svelte'
+  import Spacer from '$lib/components/layout/spacer/index.svelte'
+  import TextInput from '$lib/components/textinput/index.svelte'
+  import TextArea from '$lib/components/textarea/index.svelte'
+  import Text from '$lib/components/text/index.svelte'
 
-  import { spinCount } from '../../lib/stores'
-  import * as api from '../../lib/api'
+  import { spinCount } from '$lib/stores'
+  import * as api from '$lib/api'
 
-  import { getFileKey } from '../../lib/utils/files'
-  import { link } from '../../lib/utils/format'
-  import { success, failure } from '../../lib/utils/notifications'
+  import { getFileKey } from '$lib/utils/files'
+  import { link } from '$lib/utils/format'
+  import { success, failure } from '$lib/utils/notifications'
+  import { dataSize } from '$lib/utils'
+  import i18n from '$lib/i18n'
+
   import {
     copyCurl,
     getApiKeys,
@@ -31,8 +34,6 @@
     setStoreValue,
     updateStore,
   } from './utils'
-  import i18n from '../../lib/i18n'
-  import { dataSize } from '../../lib/utils'
 
   $: t = $i18n.t
   const pageKey = 'page.send-data'

@@ -1,16 +1,16 @@
 <script>
   import { onMount } from 'svelte'
 
-  import Button from '../../lib/components/button/index.svelte'
-  import Heading from '../../lib/components/heading/index.svelte'
-  import KeyCard from '../../lib/components/cards/key-card/index.svelte'
-  import PageWithMenu from '../../lib/components/page/template/menu/index.svelte'
-  import Spacer from '../../lib/components/layout/spacer/index.svelte'
-  import RegisterKeyPopup from '../../lib/components/popups/register-key-popup/index.svelte'
+  import Button from '$lib/components/button/index.svelte'
+  import Heading from '$lib/components/heading/index.svelte'
+  import KeyCard from '$lib/components/cards/key-card/index.svelte'
+  import PageWithMenu from '$lib/components/page/template/menu/index.svelte'
+  import Spacer from '$lib/components/layout/spacer/index.svelte'
+  import RegisterKeyPopup from '$lib/components/popups/register-key-popup/index.svelte'
 
-  import * as api from '../../lib/api'
-  import { success, failure } from '../../lib/utils/notifications'
-  import i18n from '../../lib/i18n'
+  import * as api from '$lib/api'
+  import { success, failure } from '$lib/utils/notifications'
+  import i18n from '$lib/i18n'
 
   $: t = $i18n.t
   const pageKey = 'page.key-manager'

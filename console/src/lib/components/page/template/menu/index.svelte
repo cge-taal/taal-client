@@ -1,14 +1,10 @@
 <script lang="ts">
-  // import { useLocation, useNavigate } from 'svelte-navigator'
   import { goto } from '$app/navigation'
   import { headerHeight, menuLinks, menuActions, mediaSize } from '../../../../stores'
   import Header from '../../../header/index.svelte'
   import Footer from '../../../footer/index.svelte'
   import ContentMenu from '../../content/menu/index.svelte'
   import Sidebar from '../../../sidebar/index.svelte'
-
-  // const location = useLocation()
-  // const navigate = useNavigate()
 
   const location = window.location
 
@@ -21,11 +17,11 @@
   $: {
     links = $menuLinks.map((route) => ({
       ...route,
-      selected: route.path === location.pathname, //$location.pathname,
+      selected: route.path === location.pathname,
     }))
     actions = $menuActions.map((route) => ({
       ...route,
-      selected: route.path === location.pathname, //$location.pathname,
+      selected: route.path === location.pathname,
     }))
   }
 
