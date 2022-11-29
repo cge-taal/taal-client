@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
   import { fade, fly } from 'svelte/transition'
 
   export let coverCol = 'rgba(40, 41, 51, 0.7)'

@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
   import { pageContentOffsetX } from '../../stores'
   import Modal from '../modal/index.svelte'
 
@@ -25,7 +25,7 @@
     width={size}
     style="animation-duration:{speed}ms;"
     class="svelte-spinner"
-    viewBox="0 0 32 32"
+    viewbox="0 0 32 32"
     style:--margin-left={marginLeft + 'px'}
   >
     <circle

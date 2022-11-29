@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
   import { themeLight } from './theme-light'
 
   export let theme = 'light'

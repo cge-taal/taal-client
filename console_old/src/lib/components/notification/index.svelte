@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
   import Icon from '../icon/index.svelte'
 
   export let testId = null
@@ -24,7 +24,11 @@
   }
 </script>
 
-<div class="tui-notification" data-test-id={testId} style:--status-col-local={statusCol}>
+<div
+  class="tui-notification"
+  data-test-id={testId}
+  style:--status-col-local={statusCol}
+>
   <div class="tab"><Icon name={icon} size={24} /></div>
   <div class="body">
     {#if title}

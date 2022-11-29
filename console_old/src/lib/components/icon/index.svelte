@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
   import icons from './svg'
 
   export let testId = null
