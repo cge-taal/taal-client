@@ -157,7 +157,12 @@ export const dataSize = (val) => {
   return addNumCommas(val, 2) + ' ' + unit
 }
 
-export const link = (href, text = null, className, external = true) => {
+export const link = (
+  href,
+  text: string | null = null,
+  className: string | null = null,
+  external = true
+) => {
   const propObj = external ? { target: '_blank', rel: 'noopener noreferrer' } : {}
   let prefix = ''
   if (external) {

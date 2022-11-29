@@ -1,9 +1,9 @@
 <script lang="ts">
   import icons from './svg'
 
-  export let testId = null
+  export let testId: string | undefined | null = null
 
-  export let name = 'menu'
+  export let name: string | null | undefined = null
   export let size = 24
   export let opacity = 1
 </script>

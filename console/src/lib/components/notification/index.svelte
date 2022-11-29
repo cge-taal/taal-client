@@ -1,7 +1,7 @@
 <script lang="ts">
   import Icon from '../icon/index.svelte'
 
-  export let testId = null
+  export let testId: string | undefined | null = null
 
   export let status = 'success'
   export let title = ''

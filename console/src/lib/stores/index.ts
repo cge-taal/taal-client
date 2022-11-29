@@ -1,8 +1,8 @@
 import { writable } from 'svelte/store'
 
 // header
-export const menuLinks = writable([])
-export const menuActions = writable([])
+export const menuLinks = writable<{ path: string; label: string; selected?: boolean }[]>([])
+export const menuActions = writable<{ path: string; label: string; selected?: boolean }[]>([])
 export const headerHeight = writable(0)
 
 // media queries
