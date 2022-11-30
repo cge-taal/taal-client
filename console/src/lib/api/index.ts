@@ -1,7 +1,9 @@
+import { env } from '$env/dynamic/public'
 import { spinCount } from '../stores'
-// import { PUBLIC_BASE_URL } from '$env/static/public'
 
-const PUBLIC_BASE_URL = 'http://localhost:9500'
+console.log('env.PUBLIC_BASE_URL = ', env.PUBLIC_BASE_URL)
+
+const PUBLIC_BASE_URL = env.PUBLIC_BASE_URL
 
 function incSpinCount() {
   spinCount.update((n) => n + 1)

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { env } from '$env/dynamic/public'
   import { onMount } from 'svelte'
   import mime from 'mime'
 
@@ -15,7 +16,7 @@
 
   import { getColDefs, getRangeItems } from './data'
 
-  const PUBLIC_BASE_URL = 'http://localhost:9500'
+  const PUBLIC_BASE_URL = env.PUBLIC_BASE_URL
 
   $: t = $i18n.t
   const pageKey = 'page.history'
