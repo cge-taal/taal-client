@@ -6,7 +6,8 @@
   import { setCSSVariables } from './utils/css'
 
   // web fonts
-  import './inter.css'
+  import './css/inter.css'
+  import './css/jetbrains-mono.css'
 
   const themes = {
     light: light,
