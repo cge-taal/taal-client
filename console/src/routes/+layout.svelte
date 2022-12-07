@@ -8,6 +8,9 @@
   import { spinCount } from '$lib/stores'
   import i18n from '$lib/i18n'
 
+  // web fonts
+  import '$lib/styles/inter.css'
+
   $menuLinks = [
     {
       path: '/key-manager',
