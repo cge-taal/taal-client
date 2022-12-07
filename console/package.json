@@ -35,9 +35,11 @@
   },
   "type": "module",
   "dependencies": {
+    "deepmerge": "^4.2.2",
     "focus-visible": "^5.2.0",
     "i18next": "^22.0.6",
     "mime": "^3.0.0",
+    "polished": "^4.2.2",
     "svelte-i18next": "^1.2.2"
   }
 }

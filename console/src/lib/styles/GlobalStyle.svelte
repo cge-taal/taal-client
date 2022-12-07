@@ -1,15 +1,34 @@
 <script lang="ts">
-  import { themeLight } from './theme-light'
+  import deepmerge from 'deepmerge'
 
-  export let theme = 'light'
+  import { theme, themeNs } from '../stores'
+  import { defaults, light } from './themes'
+  import { setCSSVariables } from './utils/css'
+
+  // web fonts
+  import './inter.css'
+
+  const themes = {
+    light: light,
+  }
 
   let themeProps = {}
 
   $: {
-    switch (theme) {
-      case 'light':
-        themeProps = themeLight
+    themeProps = {}
+
+    if ($theme !== null && themes[$theme]) {
+      switch ($theme) {
+        case 'light':
+          themeProps = light
+          break
+      }
+      localStorage.setItem('theme', $theme)
+    } else {
+      themeProps = light
     }
+
+    setCSSVariables(deepmerge(defaults, themeProps), $themeNs)
   }
 </script>
 

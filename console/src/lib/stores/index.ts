@@ -13,3 +13,9 @@ export const pageContentOffsetX = writable(0)
 
 // spinner
 export const spinCount = writable(0)
+
+// theme
+export const theme = writable(
+  localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light'
+)
+export const themeNs = writable('')
