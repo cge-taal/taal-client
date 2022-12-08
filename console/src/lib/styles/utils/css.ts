@@ -2,10 +2,10 @@ import { rem } from 'polished'
 
 export const setCSSVariablesFromObj = (paths: string[] = [], obj, themeNs) => {
   for (const key in obj) {
-    if (typeof obj[key] === 'string') {
+    if (typeof obj[key] === 'string' || typeof obj[key] === 'number') {
       document.documentElement.style.setProperty(
         `--${themeNs ? `${themeNs}-` : ''}${paths.length ? `${paths.join('-')}-${key}` : key}`,
-        obj[key]
+        `${obj[key]}`
       )
     } else {
       setCSSVariablesFromObj([...paths, key], obj[key], themeNs)
