@@ -63,7 +63,7 @@ export const letterSpacing = {
 // display
 
 export const display = {
-  color: palette.grey[800],
+  color: palette.gray[800],
   font: {
     family: fontFamily.inter,
     weight: fontWeight.regular,
@@ -97,7 +97,7 @@ export const display = {
 // heading
 
 export const heading = {
-  color: palette.grey[800],
+  color: palette.gray[800],
   font: {
     family: fontFamily.inter,
     weight: fontWeight.semibold,
@@ -194,7 +194,7 @@ export const heading = {
 // body
 
 export const body = {
-  color: palette.grey[800],
+  color: palette.gray[800],
   font: {
     family: fontFamily.inter,
     weight: fontWeight.regular,
@@ -236,7 +236,7 @@ export const body = {
 // numeric
 
 export const numeric = {
-  color: palette.grey[800],
+  color: palette.gray[800],
   font: {
     family: fontFamily.jetbrainsMono,
     weight: fontWeight.light,
