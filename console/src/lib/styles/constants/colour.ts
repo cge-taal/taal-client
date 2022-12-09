@@ -1,63 +1,81 @@
-import { buildColor } from '../utils/build-color'
-import { lighten, darken, setSaturation } from 'polished'
+/*
 
-export const primary = '#232d7c'
-export const primaryA = '#48c1ff'
-export const accent = '#f2b33b'
-export const accentA = '#ff8800'
-export const neutral = '#dee4eb'
-export const neutralA = '#97b6dd'
-export const gray = '#76747c'
-export const success = '#68c17c'
-export const successA = '#2aff58'
-export const danger = '#ff344c'
-export const dangerA = '#ff05b4'
+Slight deviation from the style-guide
 
-export const white = '#ffffff'
+- renamed: `purple-600` to `purple`
+- renamed: `green` to `success`
+- renamed: `red` to `danger`
+
+*/
+export const purple = '#5E3393'
+export const white = '#FFFFFF'
 export const transparent = 'transparent'
 
 export const palette = {
-  primary: buildColor({
-    50: lighten(0.6, primary),
-    400: primary,
-    900: darken(0.1, primary),
-    A400: primaryA,
-  }),
-  // secondary: buildColor({
-  //   50: lighten(0.6, secondary),
-  //   400: secondary,
-  //   900: darken(0.1, secondary),
-  //   A400: secondaryA,
-  // }),
-  accent: buildColor({
-    50: lighten(0.4, accent),
-    400: accent,
-    900: darken(0.3, setSaturation(1, accent)),
-    A400: accentA,
-  }),
-  neutral: buildColor({
-    50: lighten(0.08, neutral),
-    400: neutral,
-    900: darken(0.25, setSaturation(0.2, neutral)),
-    A400: neutralA,
-  }),
-  gray: buildColor({
-    50: '#f5f5f5',
-    100: '#efefef',
-    400: gray,
-    900: darken(0.25, setSaturation(0.2, gray)),
-    A400: gray,
-  }),
-  success: buildColor({
-    50: lighten(0.35, success),
-    400: success,
-    900: darken(0.25, setSaturation(0.2, success)),
-    A400: successA,
-  }),
-  danger: buildColor({
-    50: lighten(0.6, danger),
-    400: danger,
-    900: darken(0.2, setSaturation(0.6, danger)),
-    A400: dangerA,
-  }),
+  accent: {
+    50: '#FFFCF1',
+    100: '#FFF9E2',
+    200: '#FFF4CE',
+    300: '#FFEDAE',
+    400: '#FFE27B',
+    500: '#FFD53F',
+    600: '#FFC700',
+    700: '#FFBD3E',
+    800: '#F2B33B',
+  },
+  primary: {
+    50: '#F3F4FB',
+    100: '#E9EAF2',
+    200: '#D3D4E2',
+    300: '#C0C1D9',
+    400: '#9095C0',
+    500: '#5B619E',
+    600: '#232D7C',
+    700: '#1E276C',
+    800: '#161D50',
+  },
+  secondary: {
+    50: '#EDF7FE',
+    100: '#E7F5FF',
+    200: '#CDEAFF',
+    300: '#B2DFFF',
+    400: '#80C9FF',
+    500: '#41AFFF',
+    600: '#0094FF',
+    700: '#0084E3',
+    800: '#006BB0',
+  },
+  success: {
+    50: '#F4FFF5',
+    100: '#DDF8DE',
+    200: '#C4F2C6',
+    300: '#ABE8AD',
+    400: '#72D776',
+    500: '#02C003',
+    600: '#00AB01',
+    700: '#00960A',
+    800: '#008609',
+  },
+  danger: {
+    50: '#FFF2F2',
+    100: '#FFE5E7',
+    200: '#FDCAD3',
+    300: '#F5B3BB',
+    400: '#F57D8B',
+    500: '#F03B51',
+    600: '#E8001C',
+    700: '#D00019',
+    800: '#BB0010',
+  },
+  gray: {
+    50: '#F9F9F9',
+    100: '#F5F4F4',
+    200: '#EAEAEA',
+    300: '#E0DFE2',
+    400: '#CDCBD0',
+    500: '#B3B0B8',
+    600: '#8F8D94',
+    700: '#65656D',
+    800: '#282933',
+  },
 }
