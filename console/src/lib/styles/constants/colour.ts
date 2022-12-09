@@ -12,6 +12,9 @@ export const white = '#FFFFFF'
 export const transparent = 'transparent'
 
 export const palette = {
+  purple,
+  white,
+  transparent,
   accent: {
     50: '#FFFCF1',
     100: '#FFF9E2',
