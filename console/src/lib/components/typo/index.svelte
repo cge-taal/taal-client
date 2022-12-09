@@ -7,10 +7,11 @@
   let clazz: string | undefined | null = null
   export { clazz as class }
 
+  export let style = ''
+
   export let variant: TypoVariantType = TypoVariant.heading
   export let size = 1
   export let color: string | null = null
-  export let style = ''
 
   let cssVars: string[] = []
   $: {
