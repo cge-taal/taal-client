@@ -1,22 +1,32 @@
 <script lang="ts">
   import icons from './svg'
+  import { toUnit } from '$lib/styles/utils/css'
 
   export let testId: string | undefined | null = null
+
+  let clazz: string | undefined | null = null
+  export { clazz as class }
+
+  export let style = ''
 
   export let name: string | null | undefined = null
   export let size = 24
   export let opacity = 1
+
+  let cssVars: string[] = []
+  $: {
+    cssVars = [`--width:${toUnit(size)}`, `--height:${toUnit(size)}`, `--opacity:${opacity}`]
+  }
 </script>
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <div
-  class="tui-icon"
   data-test-id={testId}
-  style:--width-local={size + 'px'}
-  style:--height-local={size + 'px'}
-  style:--opacity-local={opacity}
+  class={`tui-icon${clazz ? ' ' + clazz : ''}`}
+  style={`${cssVars.join(';')}${style ? `;${style}` : ''}`}
   on:click
 >
-  {#if icons[name]}
+  {#if name && icons[name]}
     {@html icons[name]}
   {/if}
 </div>
@@ -25,9 +35,8 @@
   .tui-icon {
     display: flex;
     flex: 0;
-    opacity: var(--opacity-local);
-
-    width: var(--width-local);
-    height: var(--height-local);
+    opacity: var(--opacity);
+    width: var(--width);
+    height: var(--height);
   }
 </style>
