@@ -5,12 +5,21 @@ export const ComponentHeight = {
   xl: 64,
 }
 
-export const ComponentHeadingSize = {
-  sm: 6,
-  md: 6,
-  lg: 5,
-  xl: 5,
+export const ComponentFontSize = {
+  sm: 14,
+  md: 14,
+  lg: 16,
+  xl: 16,
 }
+
+export const ComponentLineHeight = {
+  sm: 20,
+  md: 20,
+  lg: 24,
+  xl: 24,
+}
+
+export const ComponentLetterSpacing = '0.01em'
 
 export const ComponentIconSize = {
   sm: 18,
@@ -29,6 +38,8 @@ export const ComponentBorderRadius = {
 export const ComponentBorderWidth = 1
 
 export const ComponentFocusRectWidth = 2
+
+export const ComponentFocusRectBorderRadius = 4
 
 export const ComponentPaddingX = {
   sm: 16,

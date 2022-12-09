@@ -4,11 +4,18 @@ import {
   ComponentBorderRadius,
   ComponentBorderWidth,
   ComponentFocusRectWidth,
+  ComponentFocusRectBorderRadius,
   ComponentHeight,
-  ComponentHeadingSize,
+  ComponentFontSize,
+  ComponentLineHeight,
+  ComponentLetterSpacing,
+  ComponentPaddingX,
+  ComponentPaddingY,
   ComponentIconSize,
 } from './defaults'
 import { toUnit } from '../utils/css'
+
+const sizes = ['sm', 'md', 'lg', 'xl']
 
 export const component = {
   box: {
@@ -16,6 +23,7 @@ export const component = {
   },
   font: {
     family: 'Inter',
+    weight: 600,
   },
   border: {
     width: toUnit(ComponentBorderWidth),
@@ -24,57 +32,37 @@ export const component = {
     rect: {
       color: palette.primary[500],
       width: toUnit(ComponentFocusRectWidth),
+      border: {
+        radius: toUnit(ComponentFocusRectBorderRadius),
+      },
     },
   },
   size: {
-    sm: {
-      height: toUnit(ComponentHeight.sm),
-      heading: {
-        size: toUnit(ComponentHeadingSize.sm),
-      },
-      icon: {
-        size: toUnit(ComponentIconSize.sm),
-      },
-      border: {
-        radius: toUnit(ComponentBorderRadius.sm),
-      },
-    },
-    md: {
-      height: toUnit(ComponentHeight.md),
-      heading: {
-        size: toUnit(ComponentHeadingSize.md),
-      },
-      icon: {
-        size: toUnit(ComponentIconSize.md),
-      },
-      border: {
-        radius: toUnit(ComponentBorderRadius.md),
-      },
-    },
-    lg: {
-      height: toUnit(ComponentHeight.lg),
-      heading: {
-        size: toUnit(ComponentHeadingSize.lg),
-      },
-      icon: {
-        size: toUnit(ComponentIconSize.lg),
-      },
-      border: {
-        radius: toUnit(ComponentBorderRadius.lg),
-      },
-    },
-    xl: {
-      height: toUnit(ComponentHeight.xl),
-      heading: {
-        size: toUnit(ComponentHeadingSize.xl),
-      },
-      icon: {
-        size: toUnit(ComponentIconSize.xl),
-      },
-    },
-    border: {
-      radius: toUnit(ComponentBorderRadius.xl),
-    },
+    ...sizes.reduce(
+      (acc, size) => ({
+        ...acc,
+        [size]: {
+          height: toUnit(ComponentHeight[size]),
+          padding: `${toUnit(ComponentPaddingY[size])} ${toUnit(ComponentPaddingX[size])}`,
+          border: {
+            radius: toUnit(ComponentBorderRadius[size]),
+          },
+          icon: {
+            size: toUnit(ComponentIconSize[size]),
+          },
+          font: {
+            size: toUnit(ComponentFontSize[size]),
+          },
+          line: {
+            height: toUnit(ComponentLineHeight[size]),
+          },
+          letter: {
+            spacing: ComponentLetterSpacing,
+          },
+        },
+      }),
+      {}
+    ),
   },
   primary: {
     enabled: {
