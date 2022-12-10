@@ -14,8 +14,9 @@ import {
   ComponentIconSize,
 } from './defaults'
 import { toUnit } from '../utils/css'
+import { ComponentStyleSize } from '../../types'
 
-const sizes = ['sm', 'md', 'lg', 'xl']
+const sizes = Object.values(ComponentStyleSize)
 
 export const component = {
   box: {
@@ -35,6 +36,20 @@ export const component = {
       border: {
         radius: toUnit(ComponentFocusRectBorderRadius),
       },
+    },
+  },
+  label: {
+    gap: toUnit(8),
+    color: palette.gray[800],
+  },
+  footnote: {
+    gap: toUnit(8),
+    color: palette.gray[800],
+    error: {
+      color: palette.danger[600],
+    },
+    disabled: {
+      color: palette.gray[500],
     },
   },
   size: {

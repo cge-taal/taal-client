@@ -33,8 +33,6 @@
 
 <style>
   .tui-icon {
-    display: flex;
-    flex: 0;
     opacity: var(--opacity);
     width: var(--width);
     height: var(--height);

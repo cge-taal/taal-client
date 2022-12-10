@@ -1,0 +1,5 @@
+export { default as Button } from './button2/index.svelte'
+export { default as FocusRect } from './focus-rect/index.svelte'
+export { default as FootnoteContainer } from './footnote-container/index.svelte'
+export { default as Icon } from './icon/index.svelte'
+export { default as LabelContainer } from './label-container/index.svelte'

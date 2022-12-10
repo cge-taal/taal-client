@@ -52,3 +52,18 @@ export enum FlexDirection {
   columnReverse = 'column-reverse',
 }
 export type FlexDirectionType = `${FlexDirection}`
+
+export enum LabelPlacement {
+  top = 'top',
+  bottom = 'bottom',
+  left = 'left',
+  right = 'right',
+}
+export type LabelPlacementType = `${LabelPlacement}`
+
+export enum LabelAlignment {
+  start = 'start',
+  center = 'center',
+  end = 'end',
+}
+export type LabelAlignmentType = `${LabelAlignment}`
