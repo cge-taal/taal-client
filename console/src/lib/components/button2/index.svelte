@@ -1,14 +1,16 @@
 <script lang="ts">
-  import FocusRect from '../focus-rect/index.svelte'
-  import Icon from '../icon/index.svelte'
-
+  import { FocusRect, FootnoteContainer, Icon, LabelContainer } from '$lib/components'
   import {
     ComponentSize,
     ComponentVariant,
     FlexDirection,
     getStyleSizeFromComponentSize,
-  } from '$lib/types'
-  import type { ComponentSizeType, ComponentVariantType, FlexDirectionType } from '$lib/types'
+  } from '$lib/styles/types'
+  import type {
+    ComponentSizeType,
+    ComponentVariantType,
+    FlexDirectionType,
+  } from '$lib/styles/types'
 
   export let testId: string | undefined | null = null
 
@@ -68,37 +70,41 @@
       `--letter-spacing:var(${buttonSizeStr}-letter-spacing, var(${compSizeStr}-letter-spacing))`,
       `--font-weight:var(--button-font-weight, var(--comp-font-weight))`,
       `--border-width:var(--button-border-width, var(--comp-border-width))`,
-      `--gap:6px`,
+      `--gap:var(--button-icon-gap, 6px)`,
     ]
   }
 </script>
 
-<FocusRect {disabled}>
-  <!-- svelte-ignore a11y-click-events-have-key-events -->
-  <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-  <div
-    data-test-id={testId}
-    class={`tui-button2${clazz ? ' ' + clazz : ''}`}
-    style={`${cssVars.join(';')}${style ? `;${style}` : ''}`}
-    class:disabled
-    class:selected
-    class:toggle
-    style:--direction={direction}
-    style:--width={width === -1 ? 'auto' : `${width}px`}
-    tabindex="0"
-    on:click
-  >
-    {#if hasIcon}
-      <Icon
-        name={icon || iconAfter}
-        style={`--width:var(${buttonSizeStr}-icon-size, var(${compSizeStr}-icon-size));--height:var(${buttonSizeStr}-icon-size, var(${compSizeStr}-icon-size))`}
-      />
-    {/if}
-    {#if $$slots.default}
-      <div class="label"><slot /></div>
-    {/if}
-  </div>
-</FocusRect>
+<LabelContainer label="Label" {size} {disabled}>
+  <FootnoteContainer footnote="Hmmm" error="Ai tog, nog n fout" {disabled}>
+    <FocusRect {disabled}>
+      <!-- svelte-ignore a11y-click-events-have-key-events -->
+      <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+      <div
+        data-test-id={testId}
+        class={`tui-button2${clazz ? ' ' + clazz : ''}`}
+        style={`${cssVars.join(';')}${style ? `;${style}` : ''}`}
+        class:disabled
+        class:selected
+        class:toggle
+        style:--direction={direction}
+        style:--width={width === -1 ? 'auto' : `${width}px`}
+        tabindex="0"
+        on:click
+      >
+        {#if hasIcon}
+          <Icon
+            name={icon || iconAfter}
+            style={`--width:var(${buttonSizeStr}-icon-size, var(${compSizeStr}-icon-size));--height:var(${buttonSizeStr}-icon-size, var(${compSizeStr}-icon-size))`}
+          />
+        {/if}
+        {#if $$slots.default}
+          <div class="label"><slot /></div>
+        {/if}
+      </div>
+    </FocusRect>
+  </FootnoteContainer>
+</LabelContainer>
 
 <style>
   .tui-button2 {
@@ -136,7 +142,7 @@
   .tui-button2:focus {
     color: var(--focus-color);
     background-color: var(--focus-bg-color);
-    border-color: var(--focus-border-color);
+    border-color: var(--focus-border-color) !important;
   }
 
   .tui-button2:hover {

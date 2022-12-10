@@ -3,18 +3,19 @@ import { palette, transparent, white } from '../constants/colour'
 import {
   ComponentBorderRadius,
   ComponentBorderWidth,
-  ComponentFocusRectWidth,
   ComponentFocusRectBorderRadius,
-  ComponentHeight,
+  ComponentFocusRectWidth,
   ComponentFontSize,
+  ComponentHeight,
+  ComponentIconSize,
   ComponentLineHeight,
   ComponentLetterSpacing,
   ComponentPaddingX,
   ComponentPaddingY,
-  ComponentIconSize,
 } from './defaults'
 import { toUnit } from '../utils/css'
-import { ComponentStyleSize } from '../../types'
+import { ComponentStyleSize } from '../types'
+import { fontFamily } from '../constants/typography'
 
 const sizes = Object.values(ComponentStyleSize)
 
@@ -23,7 +24,7 @@ export const component = {
     sizing: 'border-box',
   },
   font: {
-    family: 'Inter',
+    family: fontFamily.inter,
     weight: 600,
   },
   border: {
@@ -39,11 +40,14 @@ export const component = {
     },
   },
   label: {
-    gap: toUnit(8),
+    gap: toUnit(6),
     color: palette.gray[800],
+    disabled: {
+      color: palette.gray[500],
+    },
   },
   footnote: {
-    gap: toUnit(8),
+    gap: toUnit(6),
     color: palette.gray[800],
     error: {
       color: palette.danger[600],

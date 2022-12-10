@@ -1,7 +1,7 @@
 <script lang="ts">
   import Typo from '../typo/index.svelte'
-  import { ComponentSize, LabelAlignment, LabelPlacement } from '$lib/types'
-  import type { ComponentSizeType, LabelAlignmentType, LabelPlacementType } from '$lib/types'
+  import { ComponentSize, LabelAlignment, LabelPlacement } from '$lib/styles/types'
+  import type { ComponentSizeType, LabelAlignmentType, LabelPlacementType } from '$lib/styles/types'
 
   export let testId: string | undefined | null = null
 
@@ -10,9 +10,11 @@
 
   export let style = ''
 
-  export let size: ComponentSizeType = ComponentSize.medium
+  export let disabled = false
+  export let required = true
   export let label: any = ''
 
+  export let size: ComponentSizeType = ComponentSize.medium
   export let labelPlacement: LabelPlacementType = LabelPlacement.top
   export let labelAlignment: LabelAlignmentType = LabelAlignment.start
 
@@ -73,7 +75,13 @@
   style={`${cssVars.join(';')}${style ? `;${style}` : ''}`}
 >
   {#if label}
-    <Typo variant="heading" size={headingSize}>{label}</Typo>
+    <Typo
+      variant="heading"
+      size={headingSize}
+      style={disabled ? '--color:var(--comp-label-disabled-color)' : ''}
+    >
+      {label}{#if required}&nbsp;*{/if}
+    </Typo>
   {/if}
   <div class="content">
     <slot />

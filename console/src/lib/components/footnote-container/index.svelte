@@ -1,7 +1,7 @@
 <script lang="ts">
   import Typo from '../typo/index.svelte'
-  import { LabelAlignment } from '$lib/types'
-  import type { LabelAlignmentType } from '$lib/types'
+  import { LabelAlignment } from '$lib/styles/types'
+  import type { LabelAlignmentType } from '$lib/styles/types'
 
   export let testId: string | undefined | null = null
 
@@ -61,7 +61,7 @@
     <Typo
       variant="body"
       size={bodyTextSize}
-      style={`__color:var(${
+      style={`--color:var(${
         disabled ? '--comp-footnote-disabled-color' : '--comp-footnote-color'
       })`}
     >

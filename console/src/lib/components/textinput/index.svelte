@@ -158,6 +158,7 @@
     {#if label}
       <label for={name}>{getInputLabel(label, required)}</label>
     {/if}
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
     <div
       class="input"
       class:disabled
