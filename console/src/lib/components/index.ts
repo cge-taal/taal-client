@@ -1,4 +1,5 @@
 export { default as Button2 } from './button2/index.svelte'
+export { default as Checkbox2 } from './checkbox2/index.svelte'
 export { default as Dropdown2 } from './dropdown2/index.svelte'
 export { default as FocusRect } from './focus-rect/index.svelte'
 export { default as FootnoteContainer } from './footnote-container/index.svelte'

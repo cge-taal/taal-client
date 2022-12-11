@@ -15,7 +15,12 @@
 
   let cssVars: string[] = []
   $: {
-    cssVars = [`--width:${toUnit(size)}`, `--height:${toUnit(size)}`, `--opacity:${opacity}`]
+    cssVars = [
+      `--width:${toUnit(size)}`,
+      `--height:${toUnit(size)}`,
+      `--opacity:${opacity}`,
+      `--margin:0`,
+    ]
   }
 </script>
 
@@ -36,5 +41,6 @@
     opacity: var(--opacity);
     width: var(--width);
     height: var(--height);
+    margin: var(--margin);
   }
 </style>

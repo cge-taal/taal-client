@@ -7,6 +7,7 @@ import { body, display, heading, numeric } from '../constants/typography'
 import { component } from '../components/component'
 import { input } from '../components/input'
 import { dropdown } from '../components/dropdown'
+import { checkbox } from '../components/checkbox'
 
 export const defaults = {
   // default
@@ -40,4 +41,5 @@ export const defaults = {
   comp: { ...component },
   input: { ...input },
   dropdown: { ...dropdown },
+  checkbox: { ...checkbox },
 }

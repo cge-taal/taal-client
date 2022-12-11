@@ -37,6 +37,10 @@ export const component = {
       border: {
         radius: toUnit(ComponentFocusRectBorderRadius),
       },
+      padding: 0,
+      bg: {
+        color: white,
+      },
     },
   },
   label: {
