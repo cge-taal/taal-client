@@ -1,11 +1,6 @@
 import { palette, white } from '../constants/colour'
 
-import {
-  ComponentBorderRadius,
-  ComponentHeight,
-  ComponentIconSize,
-  ComponentLetterSpacing,
-} from './defaults'
+import { ComponentBorderRadius, ComponentHeight, ComponentLetterSpacing } from './defaults'
 import { toUnit } from '../utils/css'
 import { InputStyleSize } from '../types/input'
 import { fontFamily } from '../constants/typography'
@@ -18,9 +13,15 @@ export const InputPaddingX = {
 }
 
 export const InputPaddingY = {
-  sm: 7,
-  md: 10,
-  lg: 14,
+  sm: 1, //7,
+  md: 1, //10,
+  lg: 1, //14,
+}
+
+export const InputIconSize = {
+  sm: 16,
+  md: 18,
+  lg: 18,
 }
 
 export const TypoBodySize = {
@@ -50,7 +51,7 @@ export const input = {
             radius: toUnit(ComponentBorderRadius[size]),
           },
           icon: {
-            size: toUnit(ComponentIconSize[size]),
+            size: toUnit(InputIconSize[size]),
           },
           ...body[TypoBodySize[size]],
           letter: {

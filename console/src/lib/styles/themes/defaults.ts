@@ -6,6 +6,7 @@ import { padding, spacing } from '../constants/spacer'
 import { body, display, heading, numeric } from '../constants/typography'
 import { component } from '../components/component'
 import { input } from '../components/input'
+import { dropdown } from '../components/dropdown'
 
 export const defaults = {
   // default
@@ -38,4 +39,5 @@ export const defaults = {
   // component
   comp: { ...component },
   input: { ...input },
+  dropdown: { ...dropdown },
 }

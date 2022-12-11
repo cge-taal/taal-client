@@ -1,4 +1,12 @@
+import { white } from './colour'
+
 export const elevation = {
+  bg: {
+    color: white,
+  },
+  border: {
+    radius: '8px',
+  },
   1: {
     box: {
       shadow: '0px 0px 12px rgba(22, 29, 80, 0.08)',

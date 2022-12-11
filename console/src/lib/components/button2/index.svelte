@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { FocusRect, FootnoteContainer, Icon, LabelContainer } from '$lib/components'
+  import { FocusRect, Icon } from '$lib/components'
   import {
     ComponentSize,
     ComponentVariant,
@@ -39,7 +39,6 @@
   export let toggle = false
   export let width = -1
 
-  // size
   export let size: ComponentSizeType = ComponentSize.medium
   $: styleSize = getStyleSizeFromComponentSize(size)
 
@@ -75,36 +74,32 @@
   }
 </script>
 
-<LabelContainer label="Label" {size} {disabled}>
-  <FootnoteContainer footnote="Hmmm" error="Ai tog, nog n fout" {disabled}>
-    <FocusRect {disabled}>
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-      <div
-        data-test-id={testId}
-        class={`tui-button2${clazz ? ' ' + clazz : ''}`}
-        style={`${cssVars.join(';')}${style ? `;${style}` : ''}`}
-        class:disabled
-        class:selected
-        class:toggle
-        style:--direction={direction}
-        style:--width={width === -1 ? 'auto' : `${width}px`}
-        tabindex="0"
-        on:click
-      >
-        {#if hasIcon}
-          <Icon
-            name={icon || iconAfter}
-            style={`--width:var(${buttonSizeStr}-icon-size, var(${compSizeStr}-icon-size));--height:var(${buttonSizeStr}-icon-size, var(${compSizeStr}-icon-size))`}
-          />
-        {/if}
-        {#if $$slots.default}
-          <div class="label"><slot /></div>
-        {/if}
-      </div>
-    </FocusRect>
-  </FootnoteContainer>
-</LabelContainer>
+<FocusRect {disabled}>
+  <!-- svelte-ignore a11y-click-events-have-key-events -->
+  <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+  <div
+    data-test-id={testId}
+    class={`tui-button2${clazz ? ' ' + clazz : ''}`}
+    style={`${cssVars.join(';')}${style ? `;${style}` : ''}`}
+    class:disabled
+    class:selected
+    class:toggle
+    style:--direction={direction}
+    style:--width={width === -1 ? 'auto' : `${width}px`}
+    tabindex="0"
+    on:click
+  >
+    {#if hasIcon}
+      <Icon
+        name={icon || iconAfter}
+        style={`--width:var(${buttonSizeStr}-icon-size, var(${compSizeStr}-icon-size));--height:var(${buttonSizeStr}-icon-size, var(${compSizeStr}-icon-size))`}
+      />
+    {/if}
+    {#if $$slots.default}
+      <div class="label"><slot /></div>
+    {/if}
+  </div>
+</FocusRect>
 
 <style>
   .tui-button2 {
@@ -142,7 +137,7 @@
   .tui-button2:focus {
     color: var(--focus-color);
     background-color: var(--focus-bg-color);
-    border-color: var(--focus-border-color) !important;
+    border-color: var(--focus-border-color);
   }
 
   .tui-button2:hover {
@@ -150,11 +145,17 @@
     background-color: var(--hover-bg-color);
     border-color: var(--hover-border-color);
   }
+  .tui-button2:hover:focus {
+    border-color: var(--focus-border-color);
+  }
 
   .tui-button2:active {
     color: var(--active-color);
     background-color: var(--active-bg-color);
     border-color: var(--active-border-color);
+  }
+  .tui-button2:active:focus {
+    border-color: var(--focus-border-color);
   }
 
   .tui-button2:disabled,
@@ -163,6 +164,9 @@
     background-color: var(--disabled-bg-color);
     border-color: var(--disabled-border-color);
     cursor: auto;
+  }
+  .tui-button2.disabled {
+    pointer-events: none;
   }
 
   .tui-button2 .label {

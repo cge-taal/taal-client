@@ -223,7 +223,7 @@
   .input {
     display: flex;
     align-items: center;
-    padding: 1px 16px;
+    padding: var(--padding);
     height: var(--height);
 
     font-family: var(--font-family);
