@@ -132,6 +132,8 @@
     color: var(--enabled-color);
     background-color: var(--enabled-bg-color);
     border-color: var(--enabled-border-color);
+
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
   }
 
   .tui-button2:focus {

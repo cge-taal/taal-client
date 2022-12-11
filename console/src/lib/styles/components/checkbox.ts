@@ -1,6 +1,6 @@
 import { palette, white } from '../constants/colour'
 
-import { ComponentBorderRadius, ComponentHeight, ComponentLetterSpacing } from './defaults'
+import { ComponentLetterSpacing } from './defaults'
 import { toUnit } from '../utils/css'
 import { InputStyleSize } from '../types/input'
 import { fontFamily } from '../constants/typography'
