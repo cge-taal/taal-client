@@ -23,12 +23,10 @@
   export let footnote: any = ''
   export let required = false
   export let name = ''
-  export let group = ''
-  export let checked = true
+  export let checked = false
   export let disabled = false
   export let valid = true
   export let error = ''
-  export let allowToggle = true
 
   let type = 'checkbox'
 
@@ -38,13 +36,12 @@
   export let size: InputSizeType = ComponentSize.large
   $: styleSize = getStyleSizeFromComponentSize(size)
 
-  $: cbVarStr = `--checkbox-default`
-  $: cbSizeStr = `--checkbox-size-${styleSize}`
-  $: radioSizeStr = `--radio-size-${styleSize}`
+  $: cbVarStr = `--switch-default`
+  $: switchSizeStr = `--switch-size-${styleSize}`
 
   let cssVars: string[] = []
   $: {
-    let states = ['enabled', 'hover', 'focused', 'checked', 'disabled']
+    let states = ['enabled', 'hover', 'focused', 'checked', 'disabled', 'checked-disabled']
     cssVars = [
       ...states.reduce(
         (acc, state) => [
@@ -56,27 +53,23 @@
         [] as string[]
       ),
       `--invalid-border-color:var(--checkbox-default-invalid-border-color)`,
-      `--size:var(${radioSizeStr}-size)`,
+      `--width:var(${switchSizeStr}-width)`,
+      `--height:var(${switchSizeStr}-height)`,
+      `--padding:var(${switchSizeStr}-padding)`,
       `--border-width:var(--comp-border-width)`,
       `--border-radius:var(--checkbox-border-radius)`,
-      `--icon-size:var(${radioSizeStr}-icon-size)`,
-      `--focus-rect-size:calc(var(${cbSizeStr}-size) / 2)`,
+      `--icon-size:var(${switchSizeStr}-icon-size)`,
     ]
   }
-
-  $: blockInteraction = disabled || (checked && !allowToggle)
 
   let focused = false
 
   let inputRef
 
   function onInputParentClick() {
-    if (blockInteraction) {
-      return
-    }
     inputRef.focus()
     checked = !checked
-    dispatch('change', { name, group, type, checked })
+    dispatch('change', { name, type, checked })
   }
 
   function onFocusAction(eventName) {
@@ -101,21 +94,21 @@
     {labelAlignment}
     {labelPlacement}
     {required}
-    margin="-2px 0 0 0"
-    interactive={!disabled && !blockInteraction}
-    on:click={disabled || blockInteraction ? null : onInputParentClick}
+    margin="-4px 0 0 0"
+    interactive
+    on:click={disabled ? null : onInputParentClick}
   >
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <div
       data-test-id={testId}
-      class={`tui-radio2${clazz ? ' ' + clazz : ''}`}
+      class={`tui-switch2${clazz ? ' ' + clazz : ''}`}
       style={`${cssVars.join(';')}${style ? `;${style}` : ''}`}
     >
       <FocusRect
         {disabled}
-        style={`--focus-rect-width:1px;--focus-rect-bg-color:#FFFFFF;--focus-rect-padding:0px;--focus-rect-border-radius:calc((var(${radioSizeStr}-size) + 2px) / 2)`}
+        style={`--focus-rect-width:1px;--focus-rect-bg-color:#FFFFFF;--focus-rect-padding:1px;--focus-rect-border-radius:calc(var(--height) / 2 + var(--padding))`}
       >
-        <div class="input" class:disabled class:error={error || !valid} class:focused class:checked>
+        <div class="input" class:disabled class:error={!valid} class:focused class:checked>
           <input
             bind:this={inputRef}
             {type}
@@ -126,7 +119,7 @@
           />
           <div
             class="icon"
-            style={`width:var(${radioSizeStr}-icon-size); height:var(${radioSizeStr}-icon-size); border-radius:calc(var(${radioSizeStr}-icon-size) / 2)`}
+            style={`width:var(${switchSizeStr}-icon-size); height:var(${switchSizeStr}-icon-size); border-radius:calc(var(${switchSizeStr}-icon-size) / 2)`}
           />
         </div>
       </FocusRect>
@@ -135,14 +128,21 @@
 </FootnoteContainer>
 
 <style>
-  .tui-radio2 {
+  .tui-switch2 {
     font-family: var(--font-family);
     box-sizing: var(--box-sizing);
   }
 
   .icon {
-    /* width: var(--icon-size);
-    height: var(--icon-size); */
+    width: var(--icon-size);
+    height: var(--icon-size);
+    background-color: var(--enabled-color);
+
+    margin-left: var(--padding);
+    transition: margin-left 0.2s ease-in-out;
+  }
+  .input.checked .icon {
+    margin-left: calc(var(--width) - var(--padding) - var(--icon-size));
   }
 
   input {
@@ -156,13 +156,13 @@
   .input {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: var(--size);
-    height: var(--size);
+    justify-content: flex-start;
+    width: var(--width);
+    height: var(--height);
 
     border-width: var(--border-width);
     border-style: solid;
-    border-radius: calc(var(--size) / 2);
+    border-radius: calc(var(--height) / 2);
 
     color: var(--enabled-color);
     background-color: var(--enabled-bg-color);
@@ -171,46 +171,45 @@
 
     cursor: var(--cursor-local);
   }
+  .input .icon {
+    background-color: currentColor;
+  }
 
   .input:hover {
+    color: var(--hover-color);
+    background-color: var(--hover-bg-color);
     border-color: var(--hover-border-color);
   }
-  .input:hover .icon {
-    background-color: var(--hover-bg-color);
-  }
 
-  .input.focused {
+  .input.focused.checked {
+    color: var(--checked-color);
+    background-color: var(--focused-bg-color);
     border-color: var(--focused-border-color);
   }
-  .input.focused .icon {
-    background-color: var(--focused-bg-color);
+
+  .input.error,
+  .input.error.focused {
+    color: var(--enabled-color);
+    border-color: var(--invalid-border-color);
   }
 
   .input.checked {
-    border-color: var(--checked-border-color);
-  }
-  .input.checked .icon {
+    color: var(--checked-color);
     background-color: var(--checked-bg-color);
+    border-color: var(--checked-border-color);
   }
 
   .disabled,
   .disabled:active,
   .input.disabled {
-    background-color: var(--enabled-bg-color);
+    color: var(--checked-disabled-color);
+    background-color: var(--disabled-bg-color);
     border-color: var(--disabled-border-color);
   }
 
-  .input.checked.disabled .icon {
-    background-color: var(--disabled-bg-color);
-  }
-
-  .input.error,
-  .input.error.focused {
-    border-color: var(--invalid-border-color);
-  }
-  .input.error .icon,
-  .input.error.focused .icon,
-  .input.error.disabled .icon {
-    background-color: var(--invalid-border-color);
+  .input.checked.disabled {
+    color: var(--checked-disabled-color);
+    background-color: var(--checked-disabled-bg-color);
+    border-color: var(--checked-disabled-border-color);
   }
 </style>

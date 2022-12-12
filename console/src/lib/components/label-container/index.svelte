@@ -16,6 +16,7 @@
   export let label: any = ''
   export let variant: TypoVariantType = 'heading'
   export let interactive = false
+  export let margin = '0'
 
   export let size: ComponentSizeType = ComponentSize.medium
   export let labelPlacement: LabelPlacementType = LabelPlacement.top
@@ -105,7 +106,9 @@
     <Typo
       {variant}
       size={typoSize}
-      style={disabled ? '--color:var(--comp-label-disabled-color)' : ''}
+      style={disabled
+        ? `--color:var(--comp-label-disabled-color);--margin:${margin}`
+        : `--margin:${margin}`}
     >
       {label}{#if required}&nbsp;*{/if}
     </Typo>

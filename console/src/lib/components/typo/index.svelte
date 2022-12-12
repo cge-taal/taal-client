@@ -23,6 +23,7 @@
       `--font-weight:var(${varStr}-font-weight)`,
       `--font-size:var(${sizeStr}-font-size)`,
       `--line-height:var(${sizeStr}-line-height)`,
+      `--margin:0`,
     ]
   }
 </script>
@@ -42,5 +43,6 @@
     font-weight: var(--font-weight);
     font-size: var(--font-size);
     line-height: var(--line-height);
+    margin: var(--margin);
   }
 </style>

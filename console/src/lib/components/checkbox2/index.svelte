@@ -108,6 +108,7 @@
     {labelAlignment}
     {labelPlacement}
     {required}
+    margin="-2px 0 0 0"
     interactive
     on:click={disabled ? null : onInputParentClick}
   >
