@@ -10,6 +10,7 @@ import { dropdown } from '../components/dropdown'
 import { checkbox } from '../components/checkbox'
 import { radio } from '../components/radio'
 import { switchh } from '../components/switch'
+import { tab } from '../components/tab'
 
 export const defaults = {
   // default
@@ -46,4 +47,5 @@ export const defaults = {
   checkbox: { ...checkbox },
   radio: { ...radio },
   switch: { ...switchh },
+  tab: { ...tab },
 }
