@@ -23,7 +23,7 @@
 <div
   class="tui-sidebar"
   data-test-id={testId}
-  style:--top-local={$headerHeight + 'px'}
+  style:--top-local="var(--header-height)"
   style:--menu-width-local={menuWidth + 'px'}
 >
   <div class="cover" in:fade on:mousedown|preventDefault={onClose} />
