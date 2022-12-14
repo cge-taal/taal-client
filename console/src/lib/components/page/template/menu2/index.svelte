@@ -1,7 +1,7 @@
 <script lang="ts">
   import { goto } from '$app/navigation'
-  import { headerHeight, menuLinks, menuActions, mediaSize, MediaSize } from '../../../../stores'
-  import Header from '../../../header/index.svelte'
+  import { menuLinks, mediaSize, MediaSize } from '../../../../stores'
+  import Header2 from '../../../header2/index.svelte'
   import Footer from '../../../footer/index.svelte'
   import ContentMenu from '../../content/menu/index.svelte'
   import Sidebar from '../../../sidebar/index.svelte'
@@ -11,7 +11,6 @@
   export let testId: string | undefined | null = null
 
   let links: { path: string; label: string; selected?: boolean }[] = []
-  let actions: { path: string; label: string; selected?: boolean }[] = []
   let showSidebarMenu = false
 
   $: {
@@ -19,10 +18,7 @@
       ...route,
       selected: route.path === location.pathname,
     }))
-    actions = $menuActions.map((route) => ({
-      ...route,
-      selected: route.path === location.pathname,
-    }))
+    console.log('links =', links)
   }
 
   function onMenuItem(e) {
@@ -34,19 +30,17 @@
   }
 </script>
 
-<Header
+<Header2
   showLinks={true}
-  showActions={true}
   open={showSidebarMenu}
   {links}
-  {actions}
   on:link={onMenuItem}
   on:action={onMenuItem}
   on:toggle-menu={onToggleMenu}
   testId="header"
 />
 
-<div class="content-container" data-test-id={testId} style:--top-local={$headerHeight + 'px'}>
+<div class="content-container" data-test-id={testId}>
   <ContentMenu>
     <slot />
   </ContentMenu>
@@ -66,9 +60,9 @@
 <style>
   .content-container {
     position: absolute;
-    top: var(--top-local);
+    top: var(--header-height);
     width: 100%;
-    height: calc(100% - var(--top-local));
+    height: calc(100% - var(--header-height));
     overflow-x: hidden;
     overflow-y: auto;
   }

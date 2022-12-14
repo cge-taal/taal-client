@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { mediaSize } from '../../stores/index'
+  import { mediaSize, MediaSize } from '../../stores/index'
 
   export let testId: string | undefined | null = null
 
@@ -13,7 +13,7 @@
   let fontWeight = 700
   let letterSpacing = '0'
 
-  $: mediaSmall = $mediaSize === 'small'
+  $: mediaSmall = $mediaSize === MediaSize.sm
 
   $: {
     switch (size) {

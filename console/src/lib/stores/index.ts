@@ -5,8 +5,16 @@ export const menuLinks = writable<{ path: string; label: string; selected?: bool
 export const menuActions = writable<{ path: string; label: string; selected?: boolean }[]>([])
 export const headerHeight = writable(0)
 
+export enum MediaSize {
+  xs = 0,
+  sm = 1,
+  md = 2,
+  lg = 3,
+  xl = 4,
+}
+
 // media queries
-export const mediaSize = writable('large')
+export const mediaSize = writable<MediaSize>(MediaSize.lg)
 
 // content
 export const pageContentOffsetX = writable(0)

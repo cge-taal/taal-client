@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { mediaSize, pageContentOffsetX } from '../../../../stores'
+  import { mediaSize, pageContentOffsetX, MediaSize } from '../../../../stores'
 
-  $: gutterW = $mediaSize !== 'large' ? 22 : 180
-  $: marginTop = $mediaSize === 'small' ? 32 : 48
+  $: gutterW = $mediaSize !== MediaSize.lg ? 22 : 180
+  $: marginTop = $mediaSize === MediaSize.sm ? 32 : 48
 </script>
 
 <div

@@ -12,6 +12,7 @@ import { radio } from '../components/radio'
 import { switchh } from '../components/switch'
 import { tab } from '../components/tab'
 import { link } from '../components/link'
+import { header } from '../components/header'
 
 export const defaults = {
   // default
@@ -50,4 +51,5 @@ export const defaults = {
   switch: { ...switchh },
   tab: { ...tab },
   link: { ...link },
+  header: { ...header },
 }

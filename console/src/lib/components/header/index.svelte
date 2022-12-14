@@ -1,6 +1,6 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte'
-  import { headerHeight, mediaSize } from '../../stores'
+  import { headerHeight, mediaSize, MediaSize } from '../../stores'
 
   import Button from '../button/index.svelte'
   import Icon from '../icon/index.svelte'
@@ -31,7 +31,7 @@
 
   $: {
     gutter = 22
-    if ($mediaSize === 'large') {
+    if ($mediaSize === MediaSize.lg) {
       gutter = 180
     }
 
@@ -43,7 +43,7 @@
     logoTaalSize = { h: 38, w: 93 }
     logoClientSize = { h: 38, w: 116 }
 
-    if ($mediaSize === 'small') {
+    if ($mediaSize === MediaSize.sm) {
       height = 60
       showMobile = true
       showMenu = false
@@ -73,7 +73,7 @@
 <div
   class="tui-header"
   data-test-id={testId}
-  class:small={$mediaSize === 'small'}
+  class:small={$mediaSize === MediaSize.sm}
   style:--gutter-local={gutter + 'px'}
   style:--height-local={height + 'px'}
   style:--content-margin-left={contentMarginLeft + 'px'}

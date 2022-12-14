@@ -38,7 +38,7 @@
 <style>
   :global(:root) {
     --box-sizing: border-box;
-    --font-family: 'Work Sans';
+    --font-family: 'Inter';
 
     background: #f4f6ff;
   }
@@ -48,7 +48,7 @@
     margin: 0;
     padding: 0;
 
-    font-family: 'Work Sans';
+    font-family: 'Inter';
   }
 
   :global(a),
@@ -57,7 +57,7 @@
   :global(a:visited),
   :global(a:active) {
     text-decoration: none;
-    color: #0094ff;
+    color: var(--link-default-enabled-color);
   }
 
   :root {

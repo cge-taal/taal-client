@@ -1,7 +1,7 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte'
 
-  import { mediaSize } from '../../../../stores/index'
+  import { mediaSize, MediaSize } from '../../../../stores'
   import Button from '../../../button/index.svelte'
   import Checkbox from '../../../checkbox/index.svelte'
   import Icon from '../../../icon/index.svelte'
@@ -81,7 +81,7 @@
 
   $: {
     let gridItems = selectable ? ['32px'] : []
-    if ($mediaSize === 'small') {
+    if ($mediaSize === MediaSize.sm) {
       gridItems.push(`calc(100% - ${selectable ? '80px' : '48px'})`)
       if (iconsW > 0) {
         gridItems.push(`48px`)
@@ -129,18 +129,19 @@
   >
     <section
       class="table"
-      class:small={$mediaSize === 'small'}
+      class:small={$mediaSize === MediaSize.sm}
       class:selectable
       class:sortEnabled
       class:hasPager={paginationEnabled && pager}
     >
-      {#if $mediaSize !== 'small'}
+      {#if $mediaSize !== MediaSize.sm}
         <section class="thead">
           <div class="tr">
             {#if selectable}
               <div class="th" />
             {/if}
             {#each colDefs as colDef (colDef.id)}
+              <!-- svelte-ignore a11y-click-events-have-key-events -->
               <div class="th" on:click={() => onHeaderClick(colDef.id)}>
                 <div class="table-cell-row">
                   {colDef.name}
@@ -178,7 +179,7 @@
                 />
               </div>
             {/if}
-            {#if $mediaSize !== 'small'}
+            {#if $mediaSize !== MediaSize.sm}
               {#each colDefs as colDef (colDef.id)}
                 <div class="td">
                   {#if getDisplay(renderCells, renderTypes, colDef, idField, item).component}
@@ -199,6 +200,7 @@
                 <div class="inner-grid">
                   {#each colDefs as colDef (colDef.id)}
                     <div class="inner-grid-item" {...getStyleProps(colDef)}>
+                      <!-- svelte-ignore a11y-click-events-have-key-events -->
                       <div class="inner-grid-item-label" on:click={() => onHeaderClick(colDef.id)}>
                         <div class="table-cell-row">
                           {colDef.name}
@@ -245,10 +247,11 @@
               </div>
             {/if}
             {#if getRowIconActions}
-              <div class="td" class:column={$mediaSize === 'small'}>
+              <div class="td" class:column={$mediaSize === MediaSize.sm}>
                 {#if !disabled}
                   <div class="table-cell-row">
                     {#each getRowIconActions(name, item, idField) || [] as actionItem (actionItem.icon)}
+                      <!-- svelte-ignore a11y-click-events-have-key-events -->
                       <div
                         class="action"
                         class:disabled={actionItem.disabled}

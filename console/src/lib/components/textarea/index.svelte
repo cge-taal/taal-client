@@ -164,6 +164,7 @@
     {#if label}
       <label for={name}>{getInputLabel(label, required)}</label>
     {/if}
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
     <div
       class="input"
       class:disabled
@@ -173,6 +174,7 @@
       class:dragging={dragStartH === null}
       on:click={disabled ? null : onInputParentClick}
     >
+      <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
       <div class="control-container" tabindex={-1}>
         <textarea
           bind:this={inputRef}

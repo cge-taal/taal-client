@@ -1,6 +1,6 @@
 <script lang="ts">
   import { SvelteToast } from '@zerodevx/svelte-toast'
-  import { menuLinks, menuActions, mediaSize } from '$lib/stores'
+  import { menuLinks, mediaSize, MediaSize } from '$lib/stores'
   import { query } from '$lib/actions'
   import { medium, large } from '$lib/styles/breakpoints'
   import GlobalStyle from '$lib/styles/GlobalStyle.svelte'
@@ -21,18 +21,20 @@
       path: '/settings',
       label: $i18n.t('page.settings.menu-label'),
     },
-  ]
-  $menuActions = [
     {
       path: '/send-data',
       label: $i18n.t('page.send-data.menu-label'),
+    },
+    {
+      path: '/comps',
+      label: 'Comps',
     },
   ]
 
   $: isMedium = query(medium)
   $: isLarge = query(large)
   $: {
-    $mediaSize = $isLarge ? 'large' : $isMedium ? 'medium' : 'small'
+    $mediaSize = $isLarge ? MediaSize.lg : $isMedium ? MediaSize.md : MediaSize.sm
   }
 
   const toastOptions = {
@@ -43,15 +45,6 @@
     intro: { y: 192 },
   }
 </script>
-
-<svelte:head>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
-</svelte:head>
 
 <GlobalStyle>
   <slot />
