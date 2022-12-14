@@ -28,9 +28,13 @@ export const header = {
   },
   menu: {
     icon: {
-      size: toUnit(32),
-      margin: {
-        right: toUnit(25),
+      size: toUnit(24),
+      wrapper: {
+        size: toUnit(32),
+        padding: toUnit(4),
+        margin: {
+          right: toUnit(25),
+        },
       },
     },
   },
@@ -43,7 +47,7 @@ export const header = {
     },
   },
   tab: {
-    gap: toUnit(32),
+    gap: toUnit(16),
     padding: `${toUnit(9)} ${toUnit(8)}`,
     bg: {
       color: palette.primary[700],
@@ -53,7 +57,7 @@ export const header = {
     },
     ...heading[6],
     font: {
-      ...heading.font,
+      ...heading[6].font,
       family: heading.font.family,
       weight: heading.font.weight,
     },
@@ -67,11 +71,6 @@ export const header = {
       hover: {
         bg: {
           color: palette.primary[700],
-        },
-      },
-      selected: {
-        bg: {
-          color: palette.primary[800],
         },
       },
     },

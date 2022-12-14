@@ -49,7 +49,7 @@
 
   let cssVars: string[] = []
   $: {
-    let tabStates = ['enabled', 'hover', 'selected']
+    let tabStates = ['enabled', 'hover']
     cssVars = [
       ...tabStates.reduce(
         (acc, state) => [...acc, `--tab-${state}-bg-color:var(${tabVarStr}-${state}-bg-color)`],
@@ -63,7 +63,9 @@
       `--logo-height:var(--header-logo-height)`,
       `--logo-margin-right:var(--header-logo-margin-right)`,
       `--menu-icon-size:var(--header-menu-icon-size)`,
-      `--menu-icon-margin-right:var(--header-menu-icon-margin-right)`,
+      `--menu-icon-wrapper-margin-right:var(--header-menu-icon-wrapper-margin-right)`,
+      `--menu-icon-wrapper-size:var(--header-menu-icon-wrapper-size)`,
+      `--menu-icon-wrapper-padding:var(--header-menu-icon-wrapper-padding)`,
       `--tab-padding:var(--header-tab-padding)`,
       `--tab-border-radius:var(--header-tab-border-radius)`,
       `--tab-color:var(--header-tab-color)`,
@@ -102,7 +104,7 @@
       <div class="links">
         {#each links as link, i (link[dataKey])}
           <!-- svelte-ignore a11y-click-events-have-key-events -->
-          <div class="tab" class:selected={link.selected} on:click={(e) => onLink(link)}>
+          <div class="tab" on:click={(e) => onLink(link)}>
             {link.label}
           </div>
         {/each}
@@ -136,11 +138,21 @@
   }
 
   .icon {
-    width: var(--menu-icon-size);
-    height: var(--menu-icon-size);
+    box-sizing: var(--box-sizing);
+
+    width: var(--menu-icon-wrapper-size);
+    height: var(--menu-icon-wrapper-size);
+    padding: var(--menu-icon-wrapper-padding);
+
+    border-radius: var(--tab-border-radius);
     margin-left: 0;
-    margin-right: var(--menu-icon-margin-right);
+    margin-right: var(--menu-icon-wrapper-margin-right);
+
     color: var(--logo-color);
+    cursor: pointer;
+  }
+  .icon:hover {
+    background-color: var(--tab-hover-bg-color);
     cursor: pointer;
   }
 
@@ -163,6 +175,7 @@
   }
 
   .tab {
+    box-sizing: var(--box-sizing);
     padding: var(--tab-padding);
 
     font-size: var(--tab-font-size);
@@ -178,9 +191,6 @@
   .tab:hover {
     background-color: var(--tab-hover-bg-color);
     cursor: pointer;
-  }
-  .tab.selected {
-    background-color: var(--tab-selected-bg-color);
   }
 
   .links {
